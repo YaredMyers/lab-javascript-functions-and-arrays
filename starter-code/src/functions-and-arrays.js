@@ -1,14 +1,10 @@
 // Find the maximum
- function maxOfTwoNumbers(num1, num2) {
-   if (num1 > num2) {
-     return num1;
-   } else {
-     return num2;
-   }
- }
-// Finding Longest Word
+const maxOfTwoNumbers = (num1, num2) => {
+  return num1 > num2 ? num1 : num2;
+};
 
-var words = [
+// Finding Longest Word
+const WORDS = [
   'mystery',
   'brother',
   'aviator',
@@ -18,44 +14,37 @@ var words = [
   'crackpot'
 ];
 
-function findLongestWord(words) {
-var longestWord = words[0];
+const findLongestWord = (wordsArr) => {
+  let checkLongestWord = wordsArr[0];
 
-for (var i = 0; i < words.length ; i++) {
-  if (longestWord.length < words[i].length) {
-    longestWord = words[i];
-  }
+  wordsArr.forEach(word => {
+    if (checkLongestWord.length < word.length) {
+      checkLongestWord = word;
+    }
+  })
+  return checkLongestWord;
+};
 
-}
-return longestWord;
-}
 // Calculating a Sum
+const numbersArr = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-var numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
-
-function sumArray(numbers) {
-  var add = 0;
-  for (i = 0; i < numbers.length ; i++) {
-    add += numbers[i];
+const sumArray = (numbersArr) => {
+  let add = 0;
+  for (i = 0; i < numbersArr.length; i++) {
+    add += numbersArr[i];
   }
   return add;
-}
+};
 
 // Calculate the Average
+const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-var numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
-
-function averageNumbers(numbersAvg) {
-  var average = undefined;
-  if (numbersAvg.length === 0) {
-    return undefined;
-  } 
-    average = sumArray(numbersAvg) / numbersAvg.length;
-   return average;
-}
+const averageNumbers = (numbersAvg) => {
+  return numbersAvg.length === 0 ? undefined : numbersAvg.reduce((a, b) => (a + b)) / numbersAvg.length;
+};
 
 // Array of Strings
-var wordsArr = [
+const wordsArr = [
   'seat',
   'correspond',
   'linen',
@@ -68,18 +57,16 @@ var wordsArr = [
   'palace'
 ];
 
-function averageWordLength(newWords) {
-  var wordLen = undefined;
-  for (var i = 0; i < newWords.length; i++) {
+const averageWordLength = (newWords) => {
+  let wordLength = undefined;
+  for (let i = 0; i < newWords.length; i++) {
     newWords[i] = newWords[i].length;
   }
   return averageNumbers(newWords);
-}
-
-
+};
 
 // Unique Arrays
-var wordsUnique = [
+const wordsUnique = [
   'crab',
   'poison',
   'contagious',
@@ -93,25 +80,22 @@ var wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray(word) {
-if (word.length === 0) {
-  return undefined;
-}
-  for (var i = 0; i < word.length ; i++) {
-    for (var j = word.length-1; j > i ; j--) {
-      if (word[i] === word [j]){  
-      word.splice(j,1);
+const uniquifyArray = (word) => {
+  if (word.length === 0) {
+    return undefined;
+  }
+  for (let i = 0; i < word.length; i++) {
+    for (let j = word.length - 1; j > i; j--) {
+      if (word[i] === word[j]) {
+        word.splice(j, 1);
       }
     }
-    }
- return word;
-}
-
-
-
+  }
+  return word;
+};
 
 // Finding Elements
-var wordsFind = [
+const wordsFind = [
   'machine',
   'subset',
   'trouble',
@@ -122,17 +106,12 @@ var wordsFind = [
   'disobedience'
 ];
 
-function doesWordExist(wordsArr, word) {
-  if (wordsArr.includes(word) === true) {
-    return true;
-  } else {
-    return false;
-  }
-  
-  }
+const doesWordExist = (wordsArr, word) => {
+  return wordsArr.includes(word) ? true : false;
+};
 
 // Counting Repetion
-var wordsCount = [
+const wordsCount = [
   'machine',
   'matter',
   'subset',
@@ -146,20 +125,19 @@ var wordsCount = [
   'matter'
 ];
 
-function howManyTimes(wordArr, word) {
-	var repeat = 0;
-	for(var i = 0; i < wordArr.length; i++) {
-		if(wordArr[i] === word) {
-			repeat++;    
-		}
-	}
-	return repeat;
-}
+const howManyTimes = (wordArr, word) => {
+  let repeat = 0;
+  wordArr.forEach(words => {
+    if (words === word) {
+      repeat++;
+    }
+  })
+  return repeat;
+};
+
 console.log("This word was found " + howManyTimes(wordsCount, "matter") + " times.");
 
-
 // Bonus Quest
-
 var matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
